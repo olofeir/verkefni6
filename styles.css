@@ -1,3 +1,12 @@
+@media (max-width: 699px) {
+  .grid__col {
+    width: 100%;
+  }
+  .cards {
+    width: 100%;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +18,7 @@
 
 html {
   box-sizing: border-box;
+
   font-family: 'Open Sans', helvetica, arial, sans-serif;
   font-size: 16px;
 }
@@ -20,7 +30,12 @@ main {
   padding-right: 20px;
 }
 
-/* TODO taka ætti padding af main þegar komið er fyrir ofan hámarksbreidd */
+@media (min-width: 1490px) {
+  main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
 
 h1 {
   text-align: center;
@@ -33,6 +48,7 @@ h1 {
 
 .text p {
   margin-bottom: 20px;
+
 }
 
 .image {
@@ -40,38 +56,186 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* grid fyrir efni, setja þarf upp í html */
+/* grid fyrir efni*/
+.grid {
+  max-width: 1450px;
+  margin: 0 auto;
+}
 
 .grid__row {
   display: flex;
-  flex-direction: column;
   margin-left: -10px;
   margin-right: -10px;
 }
 
 .grid__col {
-  width: 100%;
+  width: 50%;
   padding-right: 10px;
   padding-left: 10px;
 }
 
-/* TODO setja upp grid fyrir >= 1000px */
+@media (min-width: 1000px) {
+  .cards .grid__col {
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.33%;
+  }
+  .cards .grid__col {
+    padding-left: 6.66px;
+    padding-right: 6.66px;
+  }
 
-/* TODO koma mynd fyrir á öðrum stað í < 1000px */
+  .cards .grid__col:nth-child(3n+1) {
+    padding-left: 0px;
+    padding-right: 13.33px;
+  }
 
-/* grid fyrir cards */
+  .cards .grid__col:nth-child(3n+3) {
+    padding-right: 0px;
+    padding-left: 13.33px;
+  }
 
-.cards {
 }
 
-/* TODO útfæra grid fyrir cards */
+@media (max-width: 999px){
 
-/*
-  .card kemur óbreytt úr sýnilausn á verkefni 5 fyrir utan responsive stíla og
-  að það fær `height: 100%;`
-  Sýnilausn verður gefin út við lok dags miðvikudaginn 3. okt
-*/
+  .grid__row {
+    flex-direction: column;
+  }
 
-/* TODO .card stílar úr v5 (eða sýnilausn...) */
+  .grid__col {
+    width : 100%;
+  }
+}
 
-/* TODO responsive stílar fyrir .card */
+
+/*cards og card*/
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: #eee;
+}
+
+@media (min-width: 700px) and (max-width: 999px){
+  .cards {
+    margin-bottom: 40px;
+  }
+
+  .cards .grid__col {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+  }
+
+  .cards .grid__col:nth-child(odd) {
+    padding-left: 0px;
+  }
+
+  .cards .grid__col:nth-child(even) {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 699px) {
+
+  .cards .grid__col {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    max-height: none;
+
+    border-bottom : 2px solid #aaa;
+
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow: hidden;
+  }
+
+  .card__content {
+    display: flex;
+    margin: 0;
+    padding-bottom: 10px
+  }
+
+  .card__text {
+    padding-bottom: 20px;
+  }
+
+  .card__image {
+    padding-left: 0px;
+  }
+
+  .card__img {
+    max-width: 100%;
+  }
+}
+.card {
+  display: inline;
+  margin-bottom: 10px;
+  padding: 10px;
+  overflow: hidden;
+
+  max-width: 470px;
+  max-height: 300px;
+
+  background-color: #fff;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+
+  line-height: 1;
+  word-break: break-word;
+}
+
+.card__content {
+  display: flex;
+  flex: 1;
+}
+
+@media (min-width: 700px) {
+  .card__content {
+      margin: 0.625rem 0 0.625rem;
+  }
+}
+
+.card__text {
+  font-size: 1em;
+  line-height: 1.375;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.card__image {
+  padding-left: 20px;
+  flex: 0 0 150px;
+}
+
+.card__img {
+  max-width: 100%;
+}
+
+.card__tags {
+  margin-top: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  list-style: none;
+}
+
+.card__tag {
+  font-weight: bold;
+  margin-right: 10px;
+}
